@@ -1,13 +1,13 @@
-package com.Learning.springbootlearning;
+package com.latha.springweb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringbootlearningApplication {
+public class ProductrestapiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringbootlearningApplication.class, args);
+		SpringApplication.run(ProductrestapiApplication.class, args);
 	}
 
 }
