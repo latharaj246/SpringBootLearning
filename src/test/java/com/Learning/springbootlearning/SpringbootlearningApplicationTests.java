@@ -1,7 +1,7 @@
 package com.Learning.springbootlearning;
 
 import com.latha.springweb.ProductrestapiApplication;
-import entites.Product;
+import com.latha.springweb.entites.Product;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
