@@ -1,11 +1,15 @@
 package com.latha.springweb.Controller;
 
-import entites.Product;
+import com.latha.springweb.entites.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import repos.ProductRepository;
+import com.latha.springweb.repos.ProductRepository;
+
 
 import java.util.List;
 
@@ -19,6 +23,8 @@ public class ProductRestController {
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductRestController.class);
     //getproduct
     @GetMapping(value = "/product"  )
+    @Transactional(readOnly = true)
+    @Cacheable("producr-cache")
     public  List<Product> getProduct(){
         return productRepository.findAll();
 
@@ -41,6 +47,7 @@ public class ProductRestController {
     //delete product
 
     @RequestMapping(value = "product/{id}", method = RequestMethod.DELETE)
+    @CacheEvict("product-cache")
     public void DeleteProduct (@PathVariable("id") int id) {
         LOGGER.info("Finding Product by ID"+ id);
          productRepository.deleteById(id);
