@@ -22,7 +22,7 @@ public class ProductRestController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductRestController.class);
     //getproduct
-    @GetMapping(value = "/product"  )
+    @GetMapping(value = "/products/"  )
     @Transactional(readOnly = true)
     @Cacheable("producr-cache")
     public  List<Product> getProduct(){
@@ -30,17 +30,17 @@ public class ProductRestController {
 
     }
     //get product with value
-    @GetMapping(value = "/product/{id}")
+    @GetMapping(value = "/products/{id}")
     public Product getProduct(@PathVariable("id") int id) {
         return productRepository.findById(id).get();
     }
 //create a product
-    @PostMapping(value = "/product")
+    @PostMapping(value = "/products")
     public Product createProduct(@RequestBody Product product){
         return productRepository.save(product);
     }
     // update product
-    @PostMapping(value = "/products")
+    @PutMapping(value = "/products")
     public Product updateProduct (@RequestBody  Product product){
         return productRepository.save(product);
     }
