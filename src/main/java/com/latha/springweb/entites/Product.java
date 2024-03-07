@@ -1,6 +1,9 @@
 package com.latha.springweb.entites;
 
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,8 +13,11 @@ import java.io.Serializable;
 public class Product implements Serializable {
    @Id
     private String id;
+   @NotNull
     private String name;
+   @Size(max = 100)
     private String description;
+   @Min(value = 1,message = "more than 1")
     private int price;
 
     public String getId() {
