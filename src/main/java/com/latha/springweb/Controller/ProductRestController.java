@@ -1,6 +1,8 @@
 package com.latha.springweb.Controller;
 
 import com.latha.springweb.entites.Product;
+import jakarta.validation.Valid;
+import lombok.Value;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +38,7 @@ public class ProductRestController {
     }
 //create a product
     @PostMapping(value = "/products")
-    public Product createProduct(@RequestBody Product product){
+    public Product createProduct(@Valid @RequestBody Product product){
         return productRepository.save(product);
     }
     // update product
